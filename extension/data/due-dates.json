@@ -1,0 +1,27 @@
+{
+  "_comment": "Recurring Income-tax compliance calendar (India). Dates are the statutory defaults; CBDT extensions are not reflected automatically. Review each year. month is 1-12.",
+  "version": "2026-10",
+  "rules": [
+    { "id": "tds-deposit", "label": "TDS/TCS deposit for previous month (challan 281)", "every": "month", "day": 7, "skipMonths": [4] },
+    { "id": "tds-deposit-march", "label": "TDS/TCS deposit for March", "month": 4, "day": 30 },
+    { "id": "adv-tax-1", "label": "Advance tax – 1st instalment (15%)", "month": 6, "day": 15 },
+    { "id": "adv-tax-2", "label": "Advance tax – 2nd instalment (45%)", "month": 9, "day": 15 },
+    { "id": "adv-tax-3", "label": "Advance tax – 3rd instalment (75%)", "month": 12, "day": 15 },
+    { "id": "adv-tax-4", "label": "Advance tax – 4th instalment (100%)", "month": 3, "day": 15 },
+    { "id": "tds-q4-return", "label": "TDS return Q4 (24Q/26Q/27Q)", "month": 5, "day": 31 },
+    { "id": "tds-q1-return", "label": "TDS return Q1 (24Q/26Q/27Q)", "month": 7, "day": 31 },
+    { "id": "tds-q2-return", "label": "TDS return Q2 (24Q/26Q/27Q)", "month": 10, "day": 31 },
+    { "id": "tds-q3-return", "label": "TDS return Q3 (24Q/26Q/27Q)", "month": 1, "day": 31 },
+    { "id": "form16", "label": "Issue Form 16 to employees", "month": 6, "day": 15 },
+    { "id": "form16a-q4", "label": "Issue Form 16A for Q4", "month": 6, "day": 15 },
+    { "id": "form16a-q1", "label": "Issue Form 16A for Q1", "month": 8, "day": 15 },
+    { "id": "form16a-q2", "label": "Issue Form 16A for Q2", "month": 11, "day": 15 },
+    { "id": "form16a-q3", "label": "Issue Form 16A for Q3", "month": 2, "day": 15 },
+    { "id": "sft", "label": "SFT (Form 61A) for previous FY", "month": 5, "day": 31 },
+    { "id": "itr-nonaudit", "label": "ITR – individuals/HUF/firms not under audit", "month": 7, "day": 31 },
+    { "id": "audit-report", "label": "Tax audit report (3CA/3CB-3CD)", "month": 9, "day": 30 },
+    { "id": "itr-audit", "label": "ITR – audit cases and companies", "month": 10, "day": 31 },
+    { "id": "itr-tp", "label": "ITR – transfer-pricing cases (Form 3CEB)", "month": 11, "day": 30 },
+    { "id": "belated", "label": "Belated / revised return for previous AY", "month": 12, "day": 31 }
+  ]
+}

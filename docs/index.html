@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ITR Desk – Income Tax portal companion for CAs</title>
+<meta name="description" content="Client switcher, PAN autofill, session keep-alive, auto-organised downloads and a due-date strip for the Income Tax e-Filing portal. A Chrome extension for chartered accountants and tax practitioners in India. Local-first, no account.">
+<link rel="icon" href="icon.png">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="wrap">
+  <header class="nav">
+    <a class="brand" href="./"><img src="icon.png" alt="">ITR Desk</a>
+    <nav><a href="#features">Features</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a><a href="privacy.html">Privacy</a></nav>
+  </header>
+
+  <section class="hero">
+    <span class="tag">Chrome extension · India</span>
+    <h1>Stop fighting the Income Tax portal, one client at a time.</h1>
+    <p>ITR Desk sits beside the e-Filing portal as a side panel: switch clients in one click, autofill the PAN as User ID, keep the session from timing out, and have every 26AS, AIS and notice land in the right client folder automatically.</p>
+    <a class="btn primary" id="installBtn" href="#install">Add to Chrome — free</a>
+    <a class="btn" href="#pricing">See Pro</a>
+  </section>
+
+  <section id="features">
+    <h2>Built for the daily grind of a tax practice</h2>
+    <div class="grid">
+      <div class="card"><h3>Client switcher</h3><p>Your client list with PAN, DOB and notes, searchable, one tap to make active. No passwords are stored, ever.</p></div>
+      <div class="card"><h3>PAN autofill</h3><p>The active client's PAN drops into the User ID box on the login page. You still type the password and OTP yourself.</p></div>
+      <div class="card"><h3>Session keep-alive</h3><p>Gentle activity pings and auto-dismissal of the "session about to expire" prompt while the portal tab is open.</p></div>
+      <div class="card"><h3>Downloads that file themselves</h3><p>Anything you download from the portal is saved to <code>Downloads/ITR Desk/&lt;Client&gt;/</code>. Pro also splits by assessment year.</p></div>
+      <div class="card"><h3>Due-date strip</h3><p>Advance tax, TDS deposits and returns, Form 16/16A, audit and ITR deadlines, always showing what's next.</p></div>
+      <div class="card"><h3>Notice tracker <span class="tag">Pro</span></h3><p>Log 143(1), 139(9), 148 and demand notices per client with response due dates, so nothing lapses.</p></div>
+    </div>
+  </section>
+
+  <section id="pricing">
+    <h2>Pricing</h2>
+    <div class="pricing">
+      <div class="card">
+        <h3>Free</h3>
+        <div class="price">₹0</div>
+        <ul class="feat">
+          <li>Up to 5 clients</li>
+          <li>PAN autofill and session keep-alive</li>
+          <li>Downloads sorted per client</li>
+          <li>Due-date strip</li>
+        </ul>
+      </div>
+      <div class="card" style="border-color:var(--accent)">
+        <h3>Pro <span class="tag">14-day trial</span></h3>
+        <div class="price">₹999 <small>/ year · $29 outside India</small></div>
+        <ul class="feat">
+          <li>Unlimited clients, tags and filters</li>
+          <li>Notice &amp; demand tracker with reminders</li>
+          <li>Downloads split by client and assessment year</li>
+          <li>CSV import / export of your client list</li>
+          <li>Priority email support</li>
+        </ul>
+        <p style="margin-top:14px"><a class="btn primary" id="buyBtn" href="#" rel="noopener">Buy Pro</a></p>
+        <p class="notice" style="margin-top:12px">Payments are processed by Dodo Payments (merchant of record). You receive a licence key by email; paste it into the extension's Settings tab.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="install">
+    <h2>Install</h2>
+    <p class="notice">The Chrome Web Store listing is being reviewed. Until it is live, you can load the extension from the GitHub release: download the zip, open <code>chrome://extensions</code>, turn on Developer mode, and choose "Load unpacked".</p>
+  </section>
+
+  <section id="faq">
+    <h2>FAQ</h2>
+    <div class="grid">
+      <div class="card"><h3>Does it store passwords?</h3><p>No. It stores the client name, PAN, date of birth and your notes, locally in your browser profile. Passwords and OTPs are always typed by you.</p></div>
+      <div class="card"><h3>Does anything leave my computer?</h3><p>Only the licence check, which sends your licence key to Dodo Payments to confirm it is valid. No client data is transmitted anywhere.</p></div>
+      <div class="card"><h3>Is this affiliated with the Income Tax Department?</h3><p>No. ITR Desk is an independent productivity tool and is not endorsed by or affiliated with the Income Tax Department or the Government of India.</p></div>
+      <div class="card"><h3>Does it automate filing or bypass anything?</h3><p>No. It fills a text box, keeps your session from idling out, and organises files. Every submission on the portal is done by you.</p></div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© <span id="y"></span> ITR Desk · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="refunds.html">Refunds</a> · Support: <a id="mail" href="mailto:you@example.com">you@example.com</a></p>
+  </footer>
+</div>
+<script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+</body>
+</html>

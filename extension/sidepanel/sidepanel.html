@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ITR Desk</title>
+  <link rel="stylesheet" href="sidepanel.css">
+</head>
+<body>
+  <header class="top">
+    <div class="brand">
+      <img src="../icons/icon32.png" alt="" width="22" height="22">
+      <span>ITR Desk</span>
+    </div>
+    <div class="top-actions">
+      <span id="planBadge" class="badge">Free</span>
+      <button id="upgradeBtn" class="btn btn-primary btn-sm">Upgrade</button>
+    </div>
+  </header>
+
+  <nav class="tabs" role="tablist">
+    <button class="tab is-active" data-tab="clients" role="tab">Clients</button>
+    <button class="tab" data-tab="dates" role="tab">Due dates</button>
+    <button class="tab" data-tab="notices" role="tab">Notices <span class="pro-dot" title="Pro">●</span></button>
+    <button class="tab" data-tab="settings" role="tab">Settings</button>
+  </nav>
+
+  <main>
+    <!-- Clients -->
+    <section id="tab-clients" class="panel is-active">
+      <div id="activeCard" class="card active-card">
+        <div class="muted">Active client</div>
+        <div id="activeName" class="active-name">None selected</div>
+        <div id="activePan" class="mono muted"></div>
+        <div class="row gap">
+          <button id="copyPanBtn" class="btn btn-sm" disabled>Copy PAN</button>
+          <button id="openPortalBtn" class="btn btn-sm">Open portal</button>
+        </div>
+      </div>
+
+      <div class="row gap">
+        <input id="search" type="search" placeholder="Search name, PAN or tag" aria-label="Search clients">
+        <button id="addBtn" class="btn btn-primary">Add</button>
+      </div>
+      <div id="limitNote" class="note hidden"></div>
+
+      <ul id="clientList" class="list" aria-label="Clients"></ul>
+
+      <div class="row gap csv-row">
+        <button id="exportCsvBtn" class="btn btn-sm">Export CSV <span class="pro-dot">●</span></button>
+        <label class="btn btn-sm" for="importCsv">Import CSV <span class="pro-dot">●</span></label>
+        <input id="importCsv" type="file" accept=".csv,text/csv" hidden>
+      </div>
+
+      <form id="clientForm" class="card hidden" autocomplete="off">
+        <h3 id="formTitle">Add client</h3>
+        <input type="hidden" id="f-id">
+        <label>Name <input id="f-name" required maxlength="80" placeholder="Sharma & Sons"></label>
+        <label>PAN <input id="f-pan" required maxlength="10" placeholder="ABCDE1234F" class="mono" pattern="[A-Za-z]{5}[0-9]{4}[A-Za-z]"></label>
+        <label>Date of birth / incorporation <input id="f-dob" type="date"></label>
+        <label>Tags <span class="pro-dot">●</span> <input id="f-tags" placeholder="audit, salaried, nri"></label>
+        <label>Notes <textarea id="f-notes" rows="2" placeholder="Anything useful. Never store passwords here."></textarea></label>
+        <div class="row gap end">
+          <button type="button" id="cancelBtn" class="btn">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- Due dates -->
+    <section id="tab-dates" class="panel">
+      <p class="muted small">Statutory dates. CBDT extensions are not applied automatically — confirm before relying on them.</p>
+      <ul id="dueList" class="list"></ul>
+    </section>
+
+    <!-- Notices (Pro) -->
+    <section id="tab-notices" class="panel">
+      <div id="noticesLocked" class="card locked hidden">
+        <h3>Notice & demand tracker</h3>
+        <p class="muted">Log every 143(1), 139(9), 148 and demand notice per client with its response due date, and get a reminder strip here. Included in Pro.</p>
+        <button class="btn btn-primary upgrade-link">See Pro</button>
+      </div>
+      <div id="noticesBody">
+        <div class="row gap">
+          <button id="addNoticeBtn" class="btn btn-primary">Log notice</button>
+        </div>
+        <ul id="noticeList" class="list"></ul>
+        <form id="noticeForm" class="card hidden">
+          <h3>Log notice</h3>
+          <input type="hidden" id="n-id">
+          <label>Client <select id="n-client" required></select></label>
+          <label>Section / type <input id="n-type" required placeholder="143(1)(a), 139(9), 148, demand"></label>
+          <label>DIN / reference <input id="n-din" class="mono"></label>
+          <label>Response due <input id="n-due" type="date" required></label>
+          <label>Status
+            <select id="n-status">
+              <option value="open">Open</option>
+              <option value="replied">Replied</option>
+              <option value="closed">Closed</option>
+            </select>
+          </label>
+          <label>Notes <textarea id="n-notes" rows="2"></textarea></label>
+          <div class="row gap end">
+            <button type="button" id="cancelNoticeBtn" class="btn">Cancel</button>
+            <button type="submit" class="btn btn-primary">Save</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- Settings -->
+    <section id="tab-settings" class="panel">
+      <div class="card">
+        <h3>Portal helpers</h3>
+        <label class="switch"><input type="checkbox" id="s-keepAlive"> Keep session alive while the portal tab is open</label>
+        <label class="inline">Ping every <input type="number" id="s-keepAliveMinutes" min="1" max="15" step="1"> min</label>
+        <label class="switch"><input type="checkbox" id="s-autofillOnLogin"> Autofill PAN as User ID on the login page</label>
+        <label>Custom User ID selector (optional) <input id="s-customUserIdSelector" class="mono" placeholder="#panAdhaarUserId"></label>
+      </div>
+      <div class="card">
+        <h3>Downloads</h3>
+        <label class="switch"><input type="checkbox" id="s-organiseDownloads"> Sort portal downloads into a folder per client</label>
+        <label>Root folder inside Downloads <input id="s-downloadRoot" placeholder="ITR Desk"></label>
+        <p class="muted small">Pro also splits by assessment year when the file name contains one.</p>
+      </div>
+      <div class="card">
+        <h3>Licence</h3>
+        <div id="licenseStatus" class="muted small">Free plan.</div>
+        <div class="row gap">
+          <input id="licenseKey" class="mono" placeholder="Paste licence key">
+          <button id="activateBtn" class="btn btn-primary btn-sm">Activate</button>
+        </div>
+        <div id="licenseMsg" class="note hidden"></div>
+        <div class="row gap">
+          <button id="recheckBtn" class="btn btn-sm">Re-check</button>
+          <button id="removeLicenseBtn" class="btn btn-sm">Remove key</button>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Data</h3>
+        <p class="muted small">Everything is stored locally in this browser profile. No account, no sync, no passwords.</p>
+        <button id="wipeBtn" class="btn btn-sm danger">Delete all local data</button>
+      </div>
+      <p class="muted small center">ITR Desk v<span id="ver"></span> · Not affiliated with the Income Tax Department.</p>
+    </section>
+  </main>
+
+  <div id="toast" class="toast hidden" role="status"></div>
+  <script type="module" src="sidepanel.js"></script>
+</body>
+</html>
