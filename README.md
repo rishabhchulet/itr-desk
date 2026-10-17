@@ -41,7 +41,7 @@ No bundler. Keep it that way until there's a reason not to.
 
 - [ ] `lib/license.js`: switch `DODO_BASE` to `https://live.dodopayments.com`.
 - [ ] `lib/limits.js`: set `PRICING.checkoutUrl` to the Dodo product checkout link.
-- [ ] `docs/`: replace `you@example.com` with the real support address; set the Buy Pro link.
+- [ ] `docs/`: replace `r.c.7389426@gmail.com` with the real support address; set the Buy Pro link.
 - [ ] Verify the User ID field selector on the live login page and, if needed, set a default in `content/portal.js` (`findUserIdInput`).
 - [ ] Take 1280×800 screenshots for the store (`store/screenshots/`).
 - [ ] `scripts/package.sh` → upload `dist/itr-desk-<version>.zip`.
