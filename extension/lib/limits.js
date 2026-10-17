@@ -21,8 +21,8 @@ export const FEATURES = {
 export const PRICING = {
   inr: { amount: 999, period: 'year', label: '₹999 / year' },
   usd: { amount: 29, period: 'year', label: '$29 / year' },
-  // Set this to your Dodo product checkout link once the product exists.
-  checkoutUrl: 'https://itr-desk.pages.dev/#pricing',
+  // Dodo Payments checkout for 'ITR Desk Pro (1 year)'.
+  checkoutUrl: 'https://checkout.dodopayments.com/buy/pdt_0NpvFFUGIHy7gOozbMepj?quantity=1&redirect_url=https%3A%2F%2Frishabhchulet.github.io%2Fitr-desk%2Fthanks.html',
   trialDays: 14
 };
 

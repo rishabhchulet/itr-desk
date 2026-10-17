@@ -2,11 +2,10 @@
 // Both endpoints below are public (no API key) per Dodo's docs:
 //   POST {base}/licenses/activate  { license_key, name }           -> 201 { id: "lki_...", ... }
 //   POST {base}/licenses/validate  { license_key, license_key_instance_id } -> 200 { valid: boolean }
-// Switch BASE to https://live.dodopayments.com before publishing.
 
 import { getLicense, saveLicense } from './storage.js';
 
-export const DODO_BASE = 'https://test.dodopayments.com'; // TODO: live.dodopayments.com at launch
+export const DODO_BASE = 'https://live.dodopayments.com';
 const REVALIDATE_EVERY_MS = 7 * 24 * 60 * 60 * 1000;   // re-check weekly
 const GRACE_MS = 14 * 24 * 60 * 60 * 1000;             // keep Pro on for 14 days if offline
 

@@ -39,9 +39,8 @@ No bundler. Keep it that way until there's a reason not to.
 
 ## Before first release
 
-- [ ] `lib/license.js`: switch `DODO_BASE` to `https://live.dodopayments.com`.
-- [ ] `lib/limits.js`: set `PRICING.checkoutUrl` to the Dodo product checkout link.
-- [ ] `docs/`: replace `r.c.7389426@gmail.com` with the real support address; set the Buy Pro link.
+- [x] Dodo: product `ITR Desk Pro (1 year)` (pdt_0NpvFFUGIHy7gOozbMepj), $29 / ₹999 (India override), licence key 1 year, 3 activations.
+- [x] `lib/license.js` on live, `lib/limits.js` + `docs/index.html` point at the Dodo checkout, redirect to `docs/thanks.html`.
 - [ ] Verify the User ID field selector on the live login page and, if needed, set a default in `content/portal.js` (`findUserIdInput`).
 - [ ] Take 1280×800 screenshots for the store (`store/screenshots/`).
 - [ ] `scripts/package.sh` → upload `dist/itr-desk-<version>.zip`.
