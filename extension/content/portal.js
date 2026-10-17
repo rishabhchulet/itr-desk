@@ -73,10 +73,18 @@
   }
 
   // ---- Autofill -------------------------------------------------------------
+  // Verified against the live login page (Oct 2026): the field is
+  // <input id="panAdhaarUserId" placeholder="PAN/ Aadhaar/ Other User ID" maxlength="16">
+  const KNOWN_SELECTORS = ['#panAdhaarUserId', 'input[name="panAdhaarUserId"]'];
+
   function findUserIdInput() {
     const custom = state.settings?.customUserIdSelector;
     if (custom) {
       const el = document.querySelector(custom);
+      if (el) return el;
+    }
+    for (const sel of KNOWN_SELECTORS) {
+      const el = document.querySelector(sel);
       if (el) return el;
     }
     const inputs = [...document.querySelectorAll('input')].filter((i) => {

@@ -41,8 +41,9 @@ No bundler. Keep it that way until there's a reason not to.
 
 - [x] Dodo: product `ITR Desk Pro (1 year)` (pdt_0NpvFFUGIHy7gOozbMepj), $29 / ₹999 (India override), licence key 1 year, 3 activations.
 - [x] `lib/license.js` on live, `lib/limits.js` + `docs/index.html` point at the Dodo checkout, redirect to `docs/thanks.html`.
-- [ ] Verify the User ID field selector on the live login page and, if needed, set a default in `content/portal.js` (`findUserIdInput`).
-- [ ] Take 1280×800 screenshots for the store (`store/screenshots/`).
+- [x] Login field verified on the live page: `#panAdhaarUserId` (hard-coded first, heuristic fallback).
+- [x] Store screenshots in `store/screenshots/` (1280×800), promo tile `store/promo-tile-440x280.png`.
+- [ ] Chrome Web Store: pay the $5 developer fee (if not already), create the item, upload `dist/itr-desk-0.1.0.zip`, paste `store/listing.md`, add screenshots, submit for review.
 - [ ] `scripts/package.sh` → upload `dist/itr-desk-<version>.zip`.
 
 ## Release
