@@ -3,7 +3,7 @@
   "name": "ITR Desk – Income Tax Portal Companion for CAs",
   "short_name": "ITR Desk",
   "version": "0.1.0",
-  "description": "Client switcher, PAN autofill, session keep-alive, auto-organised downloads and due dates for the Income Tax e-Filing portal. Local-first.",
+  "description": "Client switcher, PAN autofill, session keep-alive, sorted downloads and due dates for the Income Tax e-Filing portal.",
   "minimum_chrome_version": "116",
   "icons": {
     "16": "icons/icon16.png",
@@ -36,15 +36,23 @@
   ],
   "content_scripts": [
     {
-      "matches": ["https://eportal.incometax.gov.in/*"],
-      "js": ["content/portal.js"],
-      "css": ["content/portal.css"],
+      "matches": [
+        "https://eportal.incometax.gov.in/*"
+      ],
+      "js": [
+        "content/portal.js"
+      ],
+      "css": [
+        "content/portal.css"
+      ],
       "run_at": "document_idle"
     }
   ],
   "commands": {
     "_execute_action": {
-      "suggested_key": { "default": "Alt+Shift+I" },
+      "suggested_key": {
+        "default": "Alt+Shift+I"
+      },
       "description": "Open ITR Desk side panel"
     }
   }
