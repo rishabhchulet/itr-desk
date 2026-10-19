@@ -10,6 +10,7 @@
 
   let state = { client: null, settings: null, pro: false };
   let keepAliveTimer = null;
+  let sessionPromptTimer = null;
   let badge = null;
 
   const ID_HINT = /user\s*id|pan|aadhaar|login\s*id|username/i;
@@ -147,11 +148,13 @@
   // ---- Keep-alive -------------------------------------------------------------
   function setupKeepAlive() {
     if (keepAliveTimer) clearInterval(keepAliveTimer);
+    if (sessionPromptTimer) clearInterval(sessionPromptTimer);
+    keepAliveTimer = sessionPromptTimer = null;
     if (!state.settings?.keepAlive) return;
     const every = Math.max(1, Number(state.settings.keepAliveMinutes) || 4) * 60 * 1000;
     keepAliveTimer = setInterval(tick, every);
     // Watch for the expiry dialog more often than the activity ping.
-    setInterval(dismissSessionPrompt, 15 * 1000);
+    sessionPromptTimer = setInterval(dismissSessionPrompt, 15 * 1000);
   }
 
   function tick() {

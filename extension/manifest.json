@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "ITR Desk – Income Tax Portal Companion for CAs",
   "short_name": "ITR Desk",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Client switcher, PAN autofill, session keep-alive, sorted downloads and due dates for the Income Tax e-Filing portal.",
   "minimum_chrome_version": "116",
   "icons": {

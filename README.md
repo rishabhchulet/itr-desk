@@ -4,6 +4,8 @@ Chrome extension (Manifest V3) that sits beside the Income Tax e-Filing portal
 (`eportal.incometax.gov.in`) as a side panel for chartered accountants and tax
 practitioners in India.
 
+Install: [Chrome Web Store](https://chromewebstore.google.com/detail/leoeaiapcfpdppdipnkhppdlckkdifen)
+
 Free: client switcher (5 clients), PAN autofill on login, session keep-alive,
 portal downloads sorted into `Downloads/ITR Desk/<Client>/`, due-date strip.
 Pro (₹999/yr, $29/yr): unlimited clients, tags, notice & demand tracker,
@@ -43,8 +45,8 @@ No bundler. Keep it that way until there's a reason not to.
 - [x] `lib/license.js` on live, `lib/limits.js` + `docs/index.html` point at the Dodo checkout, redirect to `docs/thanks.html`.
 - [x] Login field verified on the live page: `#panAdhaarUserId` (hard-coded first, heuristic fallback).
 - [x] Store screenshots in `store/screenshots/` (1280×800), promo tile `store/promo-tile-440x280.png`.
-- [ ] Chrome Web Store: pay the $5 developer fee (if not already), create the item, upload `dist/itr-desk-0.1.0.zip`, paste `store/listing.md`, add screenshots, submit for review.
-- [ ] `scripts/package.sh` → upload `dist/itr-desk-<version>.zip`.
+- [x] Chrome Web Store: pay the $5 developer fee (if not already), create the item, upload `dist/itr-desk-0.1.0.zip`, paste `store/listing.md`, add screenshots, submit for review.
+- [x] `scripts/package.sh` → upload `dist/itr-desk-<version>.zip`. Live since 17 Oct 2026: [store listing](https://chromewebstore.google.com/detail/leoeaiapcfpdppdipnkhppdlckkdifen).
 
 ## Release
 
