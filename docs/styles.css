@@ -23,8 +23,9 @@
   --gutter:24px;
   color-scheme:light;
 }
+/* Dark ("carbon paper") follows the system unless the visitor picked a theme (theme.js sets data-theme) */
 @media (prefers-color-scheme:dark){
-  :root{
+  :root:not([data-theme="light"]){
     --paper:#141832;
     --sheet:#1b2043;
     --ink:#eceef8;
@@ -38,6 +39,20 @@
     --copy-pink:#6c3949;
     color-scheme:dark;
   }
+}
+:root[data-theme="dark"]{
+  --paper:#141832;
+  --sheet:#1b2043;
+  --ink:#eceef8;
+  --ink-soft:#aeb4d4;
+  --rule:#343b68;
+  --blue:#a3adff;
+  --blue-press:#c7ccff;
+  --on-blue:#141832;
+  --red:#ff7b6c;
+  --pink:#3c2431;
+  --copy-pink:#6c3949;
+  color-scheme:dark;
 }
 
 /* Base */
@@ -68,6 +83,24 @@ code{font-family:var(--typed);font-size:.92em;overflow-wrap:anywhere}
 .site-nav{display:flex;flex-wrap:wrap;gap:4px 24px}
 .site-nav a{color:var(--ink-soft);text-decoration:none;font-weight:600;font-size:15px;padding:4px 0}
 .site-nav a:hover,.site-nav a[aria-current]{color:var(--ink);text-decoration:underline}
+.site-nav{align-items:center}
+
+/* Light/dark switch (theme.js): shows the moon in light mode, the sun in dark mode */
+.theme-toggle{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;padding:0;border:1.5px solid var(--rule);border-radius:6px;background:transparent;color:var(--ink);cursor:pointer}
+.theme-toggle:hover{border-color:var(--ink)}
+.theme-toggle svg{width:18px;height:18px}
+.theme-toggle .i-sun{display:none}
+:root[data-theme="dark"] .theme-toggle .i-sun{display:block}
+:root[data-theme="dark"] .theme-toggle .i-moon{display:none}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]) .theme-toggle .i-sun{display:block}
+  :root:not([data-theme="light"]) .theme-toggle .i-moon{display:none}
+}
+
+/* Prices converted to the visitor's currency (prices.js) */
+.approx{font-weight:500}
+.price .approx{font-size:17px;font-stretch:100%;color:var(--ink-soft);letter-spacing:0}
+[data-price-note]{margin-top:16px}
 
 /* Buttons */
 .actions{display:flex;flex-wrap:wrap;gap:12px;margin:0}

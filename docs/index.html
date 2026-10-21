@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<script>try{var t=localStorage.getItem('creet-theme');if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
 <title>ITR Desk – Income Tax portal companion for CAs</title>
 <meta name="description" content="Client switcher, PAN autofill, session keep-alive, auto-organised downloads and a due-date strip for the Income Tax e-Filing portal. A Chrome extension for chartered accountants and tax practitioners in India. Local-first, no account.">
 <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
@@ -28,6 +29,7 @@
       <a href="#pricing">Pricing</a>
       <a href="#faq">FAQ</a>
       <a href="privacy.html">Privacy</a>
+      <button class="theme-toggle" type="button" aria-label="Switch colour theme"><svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg><svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 2.5V5M12 19v2.5M2.5 12H5M19 12h2.5M5.3 5.3l1.8 1.8M16.9 16.9l1.8 1.8M5.3 18.7l1.8-1.8M16.9 7.1l1.8-1.8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
     </nav>
   </div>
 </header>
@@ -96,7 +98,7 @@
     <div class="plans">
       <div class="plan">
         <h3>Free</h3>
-        <p class="price">₹0</p>
+        <p class="price"><span data-price data-inr="0" data-usd="0">₹0</span></p>
         <ul class="feat">
           <li>Up to 5 clients</li>
           <li>PAN autofill and session keep-alive</li>
@@ -106,7 +108,7 @@
       </div>
       <div class="plan plan-pro">
         <h3>Pro <span class="pill">14-day money-back</span></h3>
-        <p class="price">₹999 <small>/ year · $29 outside India</small></p>
+        <p class="price"><span data-price data-inr="999" data-usd="29">₹999</span> <small>/ year</small></p>
         <ul class="feat">
           <li>Unlimited clients, tags and filters</li>
           <li>Notice &amp; demand tracker with reminders</li>
@@ -118,6 +120,7 @@
         <p class="note">Payments are processed by Dodo Payments (merchant of record). You receive a licence key by email; paste it into the extension's Settings tab.</p>
       </div>
     </div>
+    <p class="note" data-price-note hidden></p>
   </section>
 
   <section id="install" class="section wrap prose">
@@ -162,5 +165,7 @@ document.getElementById('y').textContent = new Date().getFullYear();
   }, { threshold: 0.5 }).observe(pane);
 })();
 </script>
+<script src="theme.js"></script>
+<script src="prices.js"></script>
 </body>
 </html>
