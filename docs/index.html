@@ -5,42 +5,98 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>ITR Desk – Income Tax portal companion for CAs</title>
 <meta name="description" content="Client switcher, PAN autofill, session keep-alive, auto-organised downloads and a due-date strip for the Income Tax e-Filing portal. A Chrome extension for chartered accountants and tax practitioners in India. Local-first, no account.">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#141832" media="(prefers-color-scheme: dark)">
 <link rel="icon" href="icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=Courier+Prime&display=swap">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<div class="wrap">
-  <header class="nav">
-    <a class="brand" href="./"><img src="icon.png" alt="">ITR Desk</a>
-    <nav><a href="#features">Features</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a><a href="privacy.html">Privacy</a></nav>
-  </header>
+<a class="skip" href="#main">Skip to content</a>
 
-  <section class="hero">
-    <span class="tag">Chrome extension · India</span>
-    <h1>Stop fighting the Income Tax portal, one client at a time.</h1>
-    <p>ITR Desk sits beside the e-Filing portal as a side panel: switch clients in one click, autofill the PAN as User ID, keep the session from timing out, and have every 26AS, AIS and notice land in the right client folder automatically.</p>
-    <a class="btn primary" id="installBtn" href="https://chromewebstore.google.com/detail/leoeaiapcfpdppdipnkhppdlckkdifen" rel="noopener">Add to Chrome — free</a>
-    <a class="btn" href="#pricing">See Pro</a>
-  </section>
-
-  <section id="features">
-    <h2>Built for the daily grind of a tax practice</h2>
-    <div class="grid">
-      <div class="card"><h3>Client switcher</h3><p>Your client list with PAN, DOB and notes, searchable, one tap to make active. No passwords are stored, ever.</p></div>
-      <div class="card"><h3>PAN autofill</h3><p>The active client's PAN drops into the User ID box on the login page. You still type the password and OTP yourself.</p></div>
-      <div class="card"><h3>Session keep-alive</h3><p>Gentle activity pings and auto-dismissal of the "session about to expire" prompt while the portal tab is open.</p></div>
-      <div class="card"><h3>Downloads that file themselves</h3><p>Anything you download from the portal is saved to <code>Downloads/ITR Desk/&lt;Client&gt;/</code>. Pro also splits by assessment year.</p></div>
-      <div class="card"><h3>Due-date strip</h3><p>Advance tax, TDS deposits and returns, Form 16/16A, audit and ITR deadlines, always showing what's next.</p></div>
-      <div class="card"><h3>Notice tracker <span class="tag">Pro</span></h3><p>Log 143(1), 139(9), 148 and demand notices per client with response due dates, so nothing lapses.</p></div>
+<header class="wrap">
+  <div class="head-row">
+    <div class="brand">
+      <a class="mark" href="https://creet.in/"><img src="creet.svg" alt="" width="30" height="30">Creet</a>
+      <span class="sep" aria-hidden="true">/</span>
+      <a class="product" href="./"><img src="icon.png" alt="" width="24" height="24">ITR Desk</a>
     </div>
+    <nav class="site-nav" aria-label="Main">
+      <a href="#features">Features</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+      <a href="privacy.html">Privacy</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="product-hero wrap">
+    <div>
+      <p class="kind"><span class="sw sw-pink"></span>Chrome extension · India</p>
+      <h1 class="ruled">Stop fighting the Income Tax portal, one client at a time.</h1>
+      <p class="lead">ITR Desk sits beside the e-Filing portal as a side panel: switch clients in one click, autofill the PAN as User ID, keep the session from timing out, and have every 26AS, AIS and notice land in the right client folder automatically.</p>
+      <p class="actions">
+        <a class="btn btn-primary" id="installBtn" href="https://chromewebstore.google.com/detail/leoeaiapcfpdppdipnkhppdlckkdifen" rel="noopener">Add to Chrome — free</a>
+        <a class="btn" href="#pricing">See Pro</a>
+      </p>
+    </div>
+
+    <figure class="pane">
+      <div class="pane-frame">
+        <div class="pane-bar" aria-hidden="true"><img src="icon.png" alt="" width="20" height="20">ITR Desk<span class="pill">Free</span></div>
+        <div class="pane-tabs" aria-hidden="true"><span class="on">Clients</span><span>Due dates</span><span>Notices</span><span>Settings</span></div>
+        <div class="pane-active">
+          <p class="pane-label">Active client</p>
+          <p class="pane-name">Meera Eapen</p>
+          <span class="typed" style="--n:10;--d:.6s">ABCPE1234F</span>
+          <div class="pane-btns" aria-hidden="true"><span>Copy PAN</span><span>Open portal</span></div>
+        </div>
+        <ul class="pane-list">
+          <li><div><b><span class="sw sw-pink"></span>Meera Eapen</b><code>ABCPE1234F</code></div><span class="tag">salaried</span></li>
+          <li><div><b>Kumar Textiles LLP</b><code>ABCFK5678L</code></div><span class="tag">audit</span></li>
+          <li><div><b>Dr. Anil Rao</b><code>ABCPR3456N</code></div><span class="tag">44ADA</span></li>
+          <li><div><b>Sunrise Foods Pvt Ltd</b><code>ABCCS7890R</code></div><span class="tag">tds</span></li>
+        </ul>
+        <p class="pane-count">4 of 5 clients on the free plan</p>
+        <div class="pane-due">
+          <p class="pane-label">Next due</p>
+          <ol>
+            <li><time>31 Oct</time><span>ITR – audit cases and companies</span></li>
+            <li><time>31 Oct</time><span>TDS return Q2 (24Q/26Q/27Q)</span></li>
+            <li><time>7 Nov</time><span>TDS/TCS deposit (challan 281)</span></li>
+          </ol>
+        </div>
+      </div>
+      <figcaption>Example side panel with made-up clients and PANs. <span class="sw sw-pink"></span>Active client: their PAN goes into the User ID box on the portal's login page.</figcaption>
+    </figure>
   </section>
 
-  <section id="pricing">
-    <h2>Pricing</h2>
-    <div class="pricing">
-      <div class="card">
+  <section id="features" class="section wrap">
+    <div class="section-head">
+      <h2>Built for the daily grind of a tax practice</h2>
+    </div>
+    <dl class="spec">
+      <div><dt>Client switcher</dt><dd>Your client list with PAN, DOB and notes, searchable, one tap to make active. No passwords are stored, ever.</dd></div>
+      <div><dt>PAN autofill</dt><dd>The active client's PAN drops into the User ID box on the login page. You still type the password and OTP yourself.</dd></div>
+      <div><dt>Session keep-alive</dt><dd>Gentle activity pings and auto-dismissal of the "session about to expire" prompt while the portal tab is open.</dd></div>
+      <div><dt>Downloads that file themselves</dt><dd>Anything you download from the portal is saved to <code>Downloads/ITR Desk/&lt;Client&gt;/</code>. Pro also splits by assessment year.</dd></div>
+      <div><dt>Due-date strip</dt><dd>Advance tax, TDS deposits and returns, Form 16/16A, audit and ITR deadlines, always showing what's next.</dd></div>
+      <div><dt>Notice tracker <span class="pill">Pro</span></dt><dd>Log 143(1), 139(9), 148 and demand notices per client with response due dates, so nothing lapses.</dd></div>
+    </dl>
+  </section>
+
+  <section id="pricing" class="section wrap">
+    <div class="section-head">
+      <h2>Pricing</h2>
+      <p>Free for up to 5 clients. One yearly price when you need more.</p>
+    </div>
+    <div class="plans">
+      <div class="plan">
         <h3>Free</h3>
-        <div class="price">₹0</div>
+        <p class="price">₹0</p>
         <ul class="feat">
           <li>Up to 5 clients</li>
           <li>PAN autofill and session keep-alive</li>
@@ -48,9 +104,9 @@
           <li>Due-date strip</li>
         </ul>
       </div>
-      <div class="card" style="border-color:var(--accent)">
-        <h3>Pro <span class="tag">14-day money-back</span></h3>
-        <div class="price">₹999 <small>/ year · $29 outside India</small></div>
+      <div class="plan plan-pro">
+        <h3>Pro <span class="pill">14-day money-back</span></h3>
+        <p class="price">₹999 <small>/ year · $29 outside India</small></p>
         <ul class="feat">
           <li>Unlimited clients, tags and filters</li>
           <li>Notice &amp; demand tracker with reminders</li>
@@ -58,32 +114,53 @@
           <li>CSV import / export of your client list</li>
           <li>Priority email support</li>
         </ul>
-        <p style="margin-top:14px"><a class="btn primary" id="buyBtn" href="https://checkout.dodopayments.com/buy/pdt_0NpvFFUGIHy7gOozbMepj?quantity=1&redirect_url=https%3A%2F%2Frishabhchulet.github.io%2Fitr-desk%2Fthanks.html" rel="noopener">Buy Pro</a></p>
-        <p class="notice" style="margin-top:12px">Payments are processed by Dodo Payments (merchant of record). You receive a licence key by email; paste it into the extension's Settings tab.</p>
+        <a class="btn btn-primary" id="buyBtn" href="https://checkout.dodopayments.com/buy/pdt_0NpvFFUGIHy7gOozbMepj?quantity=1&redirect_url=https%3A%2F%2Frishabhchulet.github.io%2Fitr-desk%2Fthanks.html" rel="noopener">Buy Pro</a>
+        <p class="note">Payments are processed by Dodo Payments (merchant of record). You receive a licence key by email; paste it into the extension's Settings tab.</p>
       </div>
     </div>
   </section>
 
-  <section id="install">
+  <section id="install" class="section wrap prose">
     <h2>Install</h2>
     <p>ITR Desk is free on the Chrome Web Store. Click "Add to Chrome" on the listing, then open the e-Filing portal and click the ITR Desk toolbar icon (or press Alt+Shift+I) to open the side panel.</p>
-    <p style="margin-top:14px"><a class="btn primary" href="https://chromewebstore.google.com/detail/leoeaiapcfpdppdipnkhppdlckkdifen" rel="noopener">Add to Chrome — free</a></p>
+    <p class="actions" style="margin-top:28px"><a class="btn btn-primary" href="https://chromewebstore.google.com/detail/leoeaiapcfpdppdipnkhppdlckkdifen" rel="noopener">Add to Chrome — free</a></p>
   </section>
 
-  <section id="faq">
-    <h2>FAQ</h2>
-    <div class="grid">
-      <div class="card"><h3>Does it store passwords?</h3><p>No. It stores the client name, PAN, date of birth and your notes, locally in your browser profile. Passwords and OTPs are always typed by you.</p></div>
-      <div class="card"><h3>Does anything leave my computer?</h3><p>Only the licence check, which sends your licence key to Dodo Payments to confirm it is valid. No client data is transmitted anywhere.</p></div>
-      <div class="card"><h3>Is this affiliated with the Income Tax Department?</h3><p>No. ITR Desk is an independent productivity tool and is not endorsed by or affiliated with the Income Tax Department or the Government of India.</p></div>
-      <div class="card"><h3>Does it automate filing or bypass anything?</h3><p>No. It fills a text box, keeps your session from idling out, and organises files. Every submission on the portal is done by you.</p></div>
+  <section id="faq" class="section wrap">
+    <div class="section-head">
+      <h2>FAQ</h2>
+    </div>
+    <div class="faq">
+      <div class="qa"><h3>Does it store passwords?</h3><p>No. It stores the client name, PAN, date of birth and your notes, locally in your browser profile. Passwords and OTPs are always typed by you.</p></div>
+      <div class="qa"><h3>Does anything leave my computer?</h3><p>Only the licence check, which sends your licence key to Dodo Payments to confirm it is valid. No client data is transmitted anywhere.</p></div>
+      <div class="qa"><h3>Is this affiliated with the Income Tax Department?</h3><p>No. ITR Desk is an independent productivity tool and is not endorsed by or affiliated with the Income Tax Department or the Government of India.</p></div>
+      <div class="qa"><h3>Does it automate filing or bypass anything?</h3><p>No. It fills a text box, keeps your session from idling out, and organises files. Every submission on the portal is done by you.</p></div>
     </div>
   </section>
+</main>
 
-  <footer>
-    <p>© <span id="y"></span> ITR Desk · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="refunds.html">Refunds</a> · Support: <a id="mail" href="mailto:r.c.7389426@gmail.com">r.c.7389426@gmail.com</a></p>
-  </footer>
-</div>
-<script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+<footer class="wrap">
+  <div class="foot-row">
+    <p>© <span id="y">2026</span> ITR Desk, made by <a href="https://creet.in/">Creet</a></p>
+    <nav aria-label="Legal">
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+      <a href="refunds.html">Refunds</a>
+      <a id="mail" href="mailto:support@creet.in">support@creet.in</a>
+    </nav>
+  </div>
+</footer>
+<script>
+document.getElementById('y').textContent = new Date().getFullYear();
+// On small screens the panel starts below the fold: hold the typing until it scrolls into view.
+(function () {
+  var pane = document.querySelector('.pane');
+  if (!pane || !('IntersectionObserver' in window) || pane.getBoundingClientRect().top < innerHeight * 0.8) return;
+  pane.classList.add('wait');
+  new IntersectionObserver(function (entries, observer) {
+    if (entries[0].isIntersecting) { pane.classList.remove('wait'); observer.disconnect(); }
+  }, { threshold: 0.5 }).observe(pane);
+})();
+</script>
 </body>
 </html>
