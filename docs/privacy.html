@@ -34,7 +34,7 @@
 <article class="legal">
 
   <h1>Privacy Policy</h1>
-  <p class="updated">Last updated: 17 October 2026</p>
+  <p class="updated">Last updated: 30 October 2026</p>
 
   <h2>What ITR Desk is</h2>
   <p>ITR Desk is a browser extension that helps chartered accountants and tax practitioners work faster on the Income Tax e-Filing portal (eportal.incometax.gov.in). It is operated by an independent developer in India (the "Operator") and is not affiliated with the Income Tax Department or the Government of India.</p>
@@ -50,18 +50,20 @@
 
   <h2>Data that leaves your device</h2>
   <ul>
-    <li><strong>Licence checks (Pro only):</strong> your licence key and a short device label (for example "ITR Desk on Windows") are sent to Dodo Payments' licence API to activate and periodically re-validate the key. See <a href="https://dodopayments.com/privacy-policy" rel="noopener">Dodo Payments' privacy policy</a>.</li>
+    <li><strong>Licence checks (Pro only):</strong> activation sends your licence key and a short label to Dodo Payments (for example "ITR Desk on Windows" in Chrome/Edge, or "ITR Desk" in Firefox). Validation sends the licence key and activation instance ID. Results are cached for seven days, with up to fourteen days of offline grace. See <a href="https://dodopayments.com/privacy-policy" rel="noopener">Dodo Payments' privacy policy</a>.</li>
+    <li><strong>Autofill:</strong> the active client's PAN is placed in the portal's User ID field. The portal and its scripts can read that field before you submit. The extension never submits your login.</li>
     <li><strong>Purchases:</strong> payments are handled entirely by Dodo Payments as merchant of record. The Operator receives your email address and order details from Dodo to provide support; card details never reach the Operator.</li>
   </ul>
-  <p>No client data, PANs, browsing history or portal content is transmitted anywhere. The extension does not use analytics or advertising SDKs.</p>
+  <p>Client records are not uploaded to the Operator. Apart from the PAN you autofill into the portal, the extension does not send client data or portal content to another service. It does not use analytics or advertising SDKs.</p>
 
   <h2>Permissions explained</h2>
   <ul>
     <li><em>storage</em> – to keep your client list and settings locally.</li>
-    <li><em>sidePanel</em> – to show the ITR Desk panel next to the portal.</li>
-    <li><em>downloads</em> – to rename files downloaded from the portal into a folder per client. The extension does not read file contents.</li>
+    <li><em>sidePanel</em> (Chrome/Edge) or Firefox's sidebar interface – to show ITR Desk next to the portal.</li>
+    <li><em>downloads</em> – to rename portal files into a client folder in Chrome/Edge and to export CSV files on request. Firefox cannot automatically sort portal downloads; it uses your normal download folder. The extension does not read file contents.</li>
     <li><em>alarms</em> – to schedule the periodic licence re-check.</li>
     <li><em>Host access to eportal.incometax.gov.in</em> – to show the badge, fill the User ID box and keep the session alive. The extension does not run on any other site.</li>
+    <li><em>Host access to live.dodopayments.com</em> (Firefox) – licence activation and validation, without access to payment-card details.</li>
   </ul>
 
   <h2>Retention and deletion</h2>
