@@ -117,6 +117,7 @@ code{font-family:var(--typed);font-size:.92em;overflow-wrap:anywhere}
 .product-hero h1{font-size:clamp(38px,5vw,64px);margin-bottom:24px}
 .lead{font-size:18px;line-height:1.5;color:var(--ink-soft);max-width:31em;margin-bottom:32px}
 .kind{display:inline-flex;align-items:center;gap:8px;margin:0 0 20px;font-size:15px;font-weight:600;color:var(--ink-soft)}
+.works{margin:20px 0 0;font-size:15px;color:var(--ink-soft)}
 .sw{flex:none;display:inline-block;width:10px;height:10px;border-radius:2px;background:var(--rule)}
 .sw-pink{background:var(--pink-mark)}
 .typed{display:inline-block;vertical-align:bottom;white-space:nowrap;overflow:hidden;font:400 17px/1.35 var(--typed);color:var(--blue);width:calc(var(--n) * 1ch);animation:type calc(var(--n) * 38ms) steps(var(--n),end) var(--d) both}
