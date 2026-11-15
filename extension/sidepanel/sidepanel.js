@@ -2,12 +2,13 @@ import * as store from '../lib/storage.js';
 import * as license from '../lib/license.js';
 import { FREE_CLIENT_LIMIT, PRICING, canAddClient } from '../lib/limits.js';
 import { upcoming, formatDate } from '../lib/duedates.js';
+import { reviewDue, afterNotNow, storeName, reviewLink } from '../lib/review.js';
 
 const $ = (sel) => document.querySelector(sel);
 const PAN_RE = /^[A-Z]{5}[0-9]{4}[A-Z]$/;
 const PORTAL_URL = 'https://eportal.incometax.gov.in/iec/foservices/#/login';
 
-let state = { clients: [], activeId: null, settings: null, pro: false, notices: [] };
+let state = { clients: [], activeId: null, settings: null, pro: false, notices: [], engagement: null };
 
 // ---- boot -------------------------------------------------------------------
 async function boot() {
@@ -18,15 +19,17 @@ async function boot() {
   wireNotices();
   wireSettings();
   wireLicense();
+  wireReview();
   renderDueDates();
 }
 
 async function refresh() {
-  const [clients, activeId, settings, lic, notices] = await Promise.all([
-    store.getClients(), store.getActiveClientId(), store.getSettings(), license.validate(), store.getNotices()
+  const [clients, activeId, settings, lic, notices, engagement] = await Promise.all([
+    store.getClients(), store.getActiveClientId(), store.getSettings(), license.validate(), store.getNotices(), store.getEngagement()
   ]);
-  state = { ...state, clients, activeId, settings, pro: lic.pro, license: lic.license, notices };
+  state = { ...state, clients, activeId, settings, pro: lic.pro, license: lic.license, notices, engagement };
   renderPlan();
+  renderReview();
   renderActive();
   renderClients();
   renderNotices();
@@ -95,7 +98,7 @@ function renderClients() {
     li.querySelector('.pan').textContent = c.pan;
     const tags = li.querySelector('.tags');
     (c.tags || []).forEach((t) => { const s = document.createElement('span'); s.className = 'tag'; s.textContent = t; tags.appendChild(s); });
-    li.querySelector('.grow').addEventListener('click', () => setActive(c.id));
+    li.querySelector('.grow').addEventListener('click', () => switchClient(c.id));
     li.querySelector('[data-act="edit"]').addEventListener('click', () => openForm(c));
     li.querySelector('[data-act="del"]').addEventListener('click', async () => {
       if (!confirm(`Delete ${c.name}?`)) return;
@@ -117,6 +120,14 @@ async function setActive(id) {
   state.activeId = id;
   await store.setActiveClientId(id);
   renderActive(); renderClients();
+}
+
+// Picking a different client from the list. Counted locally for the review ask; the
+// card is only re-evaluated when the panel opens, so the list never shifts mid-click.
+async function switchClient(id) {
+  const changed = id !== state.activeId;
+  await setActive(id);
+  if (changed) state.engagement = await store.bumpEngagement('switches');
 }
 
 function openForm(c) {
@@ -371,6 +382,30 @@ function wireLicense() {
     if (!confirm('Remove the licence key from this browser?')) return;
     await license.deactivateLocal(); await refresh(); toast('Key removed');
   });
+}
+
+// ---- review ask -------------------------------------------------------------
+// The card on the Clients tab appears when lib/review.js says it is due; the
+// "Rate ITR Desk" button in Settings is always there.
+function renderReview() {
+  $('#reviewCard').classList.toggle('hidden', !reviewDue(state.engagement));
+}
+
+function wireReview() {
+  document.querySelectorAll('.review-store').forEach((el) => { el.textContent = storeName(); });
+  document.querySelectorAll('[data-review]').forEach((b) => b.addEventListener('click', async () => {
+    const act = b.dataset.review;
+    if (act === 'open') {
+      chrome.tabs.create({ url: reviewLink() });
+      state.engagement = await store.setReviewState('done');
+    } else if (act === 'later') {
+      const next = afterNotNow(state.engagement);
+      state.engagement = await store.setReviewState(next.state, next.until);
+    } else if (act === 'never') {
+      state.engagement = await store.setReviewState('never');
+    }
+    renderReview();
+  }));
 }
 
 // ---- misc -------------------------------------------------------------------

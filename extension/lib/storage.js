@@ -7,7 +7,8 @@ const KEYS = {
   activeClientId: 'activeClientId',
   settings: 'settings',
   license: 'license',          // { key, instanceId, validUntil, lastCheck, plan }
-  notices: 'notices'           // Array<Notice> (Pro)
+  notices: 'notices',          // Array<Notice> (Pro)
+  engagement: 'engagement'     // { firstSeen, switches, fills, filed, review } – local only, decides when to ask for a review
 };
 
 export const DEFAULT_SETTINGS = {
@@ -98,6 +99,42 @@ export async function getNotices() {
 
 export async function saveNotices(notices) {
   await set(KEYS.notices, notices);
+}
+
+// ---- engagement (local only: when to ask for a store review) ---------------
+// Counts real use: client switches, PANs filled on the login page and portal
+// downloads sorted into a client folder. It stays in this browser and is never sent.
+// review.state: 'pending' (not asked yet), 'snoozed' ("Not now" until `until`),
+// 'done' (opened the review page) or 'never' ("Don't ask again", or a second "Not now").
+const DEFAULT_ENGAGEMENT = { firstSeen: 0, switches: 0, fills: 0, filed: 0, review: { state: 'pending', until: 0, asks: 0 } };
+
+export async function getEngagement() {
+  const e = (await get(KEYS.engagement)) || {};
+  return { ...DEFAULT_ENGAGEMENT, ...e, review: { ...DEFAULT_ENGAGEMENT.review, ...(e.review || {}) } };
+}
+
+export async function markFirstSeen() {
+  const e = await getEngagement();
+  if (e.firstSeen) return e;
+  e.firstSeen = Date.now();
+  await set(KEYS.engagement, e);
+  return e;
+}
+
+/** @param {'switches'|'fills'|'filed'} kind */
+export async function bumpEngagement(kind) {
+  const e = await getEngagement();
+  if (!e.firstSeen) e.firstSeen = Date.now();
+  e[kind] = (e[kind] || 0) + 1;
+  await set(KEYS.engagement, e);
+  return e;
+}
+
+export async function setReviewState(state, until = 0) {
+  const e = await getEngagement();
+  e.review = { ...e.review, state, until, asks: e.review.asks + (state === 'snoozed' ? 1 : 0) };
+  await set(KEYS.engagement, e);
+  return e;
 }
 
 export function cryptoId() {

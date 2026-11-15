@@ -126,6 +126,7 @@
     el.focus();
     setNativeValue(el, c.pan.toUpperCase());
     flashBadge(`Filled ${c.pan}`);
+    send({ type: 'usage:fill' }); // counted locally to decide when to ask for a review
     return true;
   }
 

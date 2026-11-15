@@ -112,6 +112,15 @@ label.switch input { margin: 0; }
 .note { font-size: 12px; padding: 8px 10px; border-radius: 8px; background: var(--warn-soft); color: var(--warn); margin: 8px 0; }
 .note.ok { background: color-mix(in srgb, var(--ok) 12%, var(--card)); color: var(--ok); }
 .locked { text-align: center; padding: 20px 14px; }
+.between { justify-content: space-between; }
+.wrap { flex-wrap: wrap; }
+.btn-ghost { background: transparent; border-color: transparent; color: var(--muted); }
+.btn-ghost:hover { color: var(--text); }
+.eyebrow { font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
+.review-card h3 { margin: 2px 0 4px; }
+.review-card p { margin: 0 0 10px; }
+.review-card p:last-child { margin: 10px 0 0; }
+.card a { color: var(--accent); }
 .csv-row { margin: 4px 0 12px; }
 .toast {
   position: fixed; left: 50%; bottom: 14px; transform: translateX(-50%);

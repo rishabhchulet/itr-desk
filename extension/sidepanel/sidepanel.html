@@ -28,6 +28,22 @@
   <main>
     <!-- Clients -->
     <section id="tab-clients" class="panel is-active">
+      <!-- Shown only when lib/review.js says a review ask is due. -->
+      <div id="reviewCard" class="card review-card hidden" role="region" aria-label="Review request">
+        <div class="row between">
+          <span class="eyebrow">Quick favour</span>
+          <button class="icon-btn" data-review="later" title="Not now" aria-label="Not now">✕</button>
+        </div>
+        <h3>Is ITR Desk saving you time on the portal?</h3>
+        <p class="muted small">A short review on <span class="review-store">the Chrome Web Store</span> helps other CAs decide whether to try ITR Desk. Honest reviews, good or bad, are what help.</p>
+        <div class="row gap wrap">
+          <button class="btn btn-primary btn-sm" data-review="open">Leave a review</button>
+          <button class="btn btn-sm btn-ghost" data-review="later">Not now</button>
+          <button class="btn btn-sm btn-ghost" data-review="never">Don't ask again</button>
+        </div>
+        <p class="muted small">Something not working? Email <a href="mailto:support@creet.in?subject=ITR%20Desk" target="_blank" rel="noopener">support@creet.in</a> and we'll look into it.</p>
+      </div>
+
       <div id="activeCard" class="card active-card">
         <div class="muted">Active client</div>
         <div id="activeName" class="active-name">None selected</div>
@@ -135,6 +151,11 @@
           <button id="recheckBtn" class="btn btn-sm">Re-check</button>
           <button id="removeLicenseBtn" class="btn btn-sm">Remove key</button>
         </div>
+      </div>
+      <div class="card">
+        <h3>Feedback</h3>
+        <p class="muted small">A bug, a portal change that broke something, or an idea? Email <a href="mailto:support@creet.in?subject=ITR%20Desk" target="_blank" rel="noopener">support@creet.in</a>.</p>
+        <button class="btn btn-sm" data-review="open">Rate ITR Desk on <span class="review-store">the Chrome Web Store</span></button>
       </div>
       <div class="card">
         <h3>Data</h3>

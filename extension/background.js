@@ -13,6 +13,7 @@ chrome.runtime.onInstalled.addListener(async ({ reason }) => {
   if (reason === 'install') {
     await store.saveSettings({}); // writes defaults
   }
+  await store.markFirstSeen(); // local only; existing users start counting from this update
 });
 
 chrome.alarms.onAlarm.addListener(async (alarm) => {
@@ -44,6 +45,7 @@ chrome.downloads.onDeterminingFilename.addListener((item, suggest) => {
       }
       parts.push(item.filename.split(/[\\/]/).pop());
       suggest({ filename: parts.join('/'), conflictAction: 'uniquify' });
+      store.bumpEngagement('filed').catch(() => {}); // local count for the review ask
     } catch (e) {
       console.warn('[ITR Desk] organiser skipped:', e);
       suggest();
@@ -94,6 +96,12 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
       }
       case 'license:remove': {
         await license.deactivateLocal();
+        sendResponse({ ok: true });
+        break;
+      }
+      case 'usage:fill': {
+        // The content script filled a PAN on the login page. Local count only.
+        await store.bumpEngagement('fills');
         sendResponse({ ok: true });
         break;
       }
